@@ -1,62 +1,41 @@
 # Customer Churn Prediction & Analytics
 
-**Prepared by:** Surya  
-**Project Type:** Data Analytics & Machine Learning  
-**Domain:** Telecommunications / Customer Retention
+**Tools:** SQL Server, Python, Machine Learning, MLflow, Power BI  
+**Prepared by:** Surya
 
 ---
 
-## 1. Project Overview
+## 📌 Project Overview
 
-Customer churn is an important business problem for telecommunications companies because losing existing customers can reduce recurring revenue.
+This project analyzes customer churn for a telecommunications company and develops a machine learning model to identify customers who are likely to leave.
 
-This project analyzes customer data to understand churn patterns, identify customers who are likely to churn, and provide actionable insights through Power BI dashboards.
+The project follows an end-to-end data analytics and machine learning workflow:
 
-The project combines SQL, Python, Machine Learning, MLflow, and Power BI into one end-to-end analytics workflow.
+**SQL Server → Python → Data Cleaning → Feature Engineering → Machine Learning → MLflow → Churn Prediction → Power BI**
 
-### Project Workflow
-
-SQL Server  
-↓  
-Data Cleaning & Exploration  
-↓  
-Python  
-↓  
-Feature Engineering  
-↓  
-Machine Learning  
-↓  
-Model Evaluation  
-↓  
-MLflow Tracking  
-↓  
-Customer Churn Prediction  
-↓  
-Power BI Dashboard
+The main objective is to understand customer churn patterns, predict potential churn customers, and provide business insights that can support customer retention activities.
 
 ---
 
-## 2. Project Objectives
-
-The main objectives of this project are:
+## 🎯 Project Objectives
 
 - Analyze customer churn patterns.
 - Clean and prepare customer data for analysis.
 - Perform exploratory data analysis using SQL and Python.
 - Create useful customer features for machine learning.
-- Build and compare multiple classification models.
 - Handle class imbalance using SMOTE.
-- Optimize models using GridSearchCV.
+- Train and compare multiple machine learning models.
+- Tune model parameters using GridSearchCV.
 - Track model experiments using MLflow.
-- Predict churn probability for individual customers.
+- Generate customer-level churn probabilities.
 - Categorize customers based on churn risk.
-- Explain model predictions using LIME and feature importance.
-- Create interactive Power BI dashboards for business users.
-- Package the trained model into a reusable pipeline.
+- Build Power BI dashboards for business reporting.
+- Explain model predictions using feature importance and LIME.
+- Save the trained model as a reusable pipeline.
 
 ---
 
-## 3. Dataset
+## 📊 Dataset
 
 The project uses the **Telco Customer Churn dataset**.
 
@@ -66,138 +45,123 @@ The project uses the **Telco Customer Churn dataset**.
 - **Original columns:** 21
 - **Target variable:** `Churn`
 
-### Main Columns
+### Important Columns
 
 | Column | Description |
 |---|---|
 | customerID | Unique customer identifier |
 | gender | Customer gender |
-| SeniorCitizen | Whether the customer is a senior citizen |
+| SeniorCitizen | Indicates whether the customer is a senior citizen |
 | Partner | Whether the customer has a partner |
 | Dependents | Whether the customer has dependents |
 | tenure | Number of months the customer has stayed |
-| PhoneService | Whether phone service is active |
-| MultipleLines | Multiple line service |
-| InternetService | Internet service type |
+| PhoneService | Whether the customer has phone service |
+| MultipleLines | Multiple phone lines |
+| InternetService | Type of internet service |
 | OnlineSecurity | Online security service |
 | OnlineBackup | Online backup service |
 | DeviceProtection | Device protection service |
 | TechSupport | Technical support service |
 | StreamingTV | Streaming TV service |
-| StreamingMovies | Streaming movie service |
+| StreamingMovies | Streaming movies service |
 | Contract | Customer contract type |
-| PaperlessBilling | Whether paperless billing is used |
+| PaperlessBilling | Whether paperless billing is enabled |
 | PaymentMethod | Customer payment method |
-| MonthlyCharges | Monthly customer charges |
-| TotalCharges | Total customer charges |
-| Churn | Whether the customer churned |
+| MonthlyCharges | Monthly amount charged |
+| TotalCharges | Total amount charged |
+| Churn | Whether the customer left the company |
 
 ---
 
-## 4. Tools & Technologies
+## 🛠️ Tools & Technologies
 
 ### Database
-
 - SQL Server
 - SQL Server Management Studio (SSMS)
 
 ### Programming
-
 - Python
-- Jupyter Notebook
-
-### Python Libraries
-
 - Pandas
 - NumPy
 - Matplotlib
 - Seaborn
-- Scikit-learn
-- Imbalanced-learn
-- XGBoost
-- PyODBC
-- SQLAlchemy
-- MLflow
-- LIME
-- Joblib
-
-### Visualization
-
-- Power BI
 
 ### Machine Learning
-
+- Scikit-learn
 - Logistic Regression
 - Random Forest
 - XGBoost
 - SMOTE
 - GridSearchCV
 
----
+### Model Tracking
+- MLflow
 
-## 5. Project Structure
+### Explainable AI
+- LIME
+- XGBoost Feature Importance
 
-The project was completed in multiple tasks covering SQL, Python, Machine Learning, explainability, prediction, and Power BI.
+### Visualization
+- Power BI
 
-### SQL Analysis
-
-The initial analysis was performed using SQL Server.
-
-The SQL work included:
-
-- Database and table creation.
-- Data import.
-- Data validation.
-- Data cleaning.
-- Churn rate analysis.
-- Average monthly charges analysis.
-- Tenure analysis.
-- Internet service analysis.
-- Technical support analysis.
-- Payment method analysis.
-- Creation of a reusable SQL view.
-
-The main SQL view used in Python was:
-
-`dbo.vw_ChurnData`
+### Model Deployment / Reusability
+- Joblib
+- Scikit-learn Pipeline
 
 ---
 
-## 6. Data Cleaning
+## 🔄 Project Workflow
 
-The data was checked for missing and invalid values before performing machine learning.
+### 1. SQL Server
 
-### TotalCharges
+The customer churn dataset was imported into SQL Server.
 
-There were 11 customers with blank `TotalCharges`.
+SQL was used to:
 
-After checking these records, all 11 customers had:
-
-- `tenure = 0`
-
-These records were retained because they are valid customer records.
-
-For the machine learning dataset, the blank numeric values were handled during Python preprocessing so that the model could process the data.
+- Explore the dataset.
+- Check customer counts.
+- Calculate churn rate.
+- Analyze monthly charges.
+- Analyze tenure.
+- Analyze internet service and churn.
+- Analyze technical support and churn.
+- Analyze payment methods and churn.
+- Create the `vw_ChurnData` view.
 
 ---
 
-## 7. Feature Engineering
+### 2. Python Data Preparation
 
-Additional features were created to improve the analysis and machine learning process.
+The data was imported from SQL Server into Python using Pandas and PyODBC/SQLAlchemy.
+
+Data preparation included:
+
+- Checking dataset shape.
+- Checking data types.
+- Handling blank `TotalCharges` values.
+- Converting required columns into appropriate formats.
+- Encoding categorical variables.
+- Preparing the dataset for machine learning.
+
+There were 11 customers with blank `TotalCharges`. These records had zero tenure, so the customer records were retained rather than removed.
+
+---
+
+### 3. Feature Engineering
+
+Additional features were created to improve the analysis.
 
 ### Customer Segment
 
-Customers were grouped based on tenure:
+Customers were divided based on tenure:
 
-| Tenure | Customer Segment |
-|---|---|
-| 0–12 months | New |
-| 13–24 months | Established |
-| 25+ months | Loyal |
+- **0–1 Year:** New
+- **1–2 Years:** Established
+- **2+ Years:** Loyal
 
 ### Total Services Used
 
-The following services were counted:
+The following services were used to calculate the number of additional services used by each customer:
 
 - Online Security
 - Online Backup
@@ -206,126 +170,62 @@ The following services were counted:
 - Streaming TV
 - Streaming Movies
 
-A new feature called:
+The resulting feature was:
 
 `TotalServicesUsed`
 
-was created to represent the number of services used by each customer.
-
 ---
 
-## 8. Data Preparation for Machine Learning
-
-The following preprocessing steps were performed:
-
-- Converted binary Yes/No columns into numeric values.
-- Applied one-hot encoding to categorical variables.
-- Created customer tenure segments.
-- Created `TotalServicesUsed`.
-- Removed `customerID` from the machine learning features.
-- Prepared the feature matrix `X`.
-- Prepared the target variable `y`.
-- Split the data into training and testing sets.
-
-The train-test split used:
-
-- Training data: 80%
-- Testing data: 20%
-- Random state: 42
-- Stratification based on the churn target.
-
----
-
-## 9. Exploratory Data Analysis
-
-SQL and Python were used to understand customer churn patterns.
-
-### Overall Churn
-
-The overall churn rate was approximately:
-
-**26.54%**
-
-### Monthly Charges
-
-The average monthly charge was:
-
-- **Churned customers:** ₹74.44
-- **Stayed customers:** ₹61.27
-
-This shows that churned customers had higher average monthly charges in the analyzed dataset.
-
-### Tenure
-
-Customers with longer tenure generally showed lower churn compared with newer customers.
-
-### Contract
-
-Month-to-month customers showed a higher churn rate compared with customers on longer-term contracts.
-
-### Customer Services
-
-Service usage such as technical support, online security, online backup, and device protection was also analyzed to understand its relationship with churn.
-
----
-
-## 10. Machine Learning Models
-
-Three classification algorithms were trained and compared:
-
-1. Logistic Regression
-2. Random Forest
-3. XGBoost
+## 🤖 Machine Learning
 
 The target variable was:
 
 `Churn`
 
-The models were evaluated using:
+The data was divided into training and testing datasets using an 80/20 split with stratification.
+
+### Models Tested
+
+Three machine learning models were trained and compared:
+
+1. Logistic Regression
+2. Random Forest
+3. XGBoost
+
+---
+
+## ⚖️ Handling Class Imbalance
+
+Customer churn is an imbalanced classification problem because the number of customers who stayed is higher than the number who churned.
+
+SMOTE (**Synthetic Minority Over-sampling Technique**) was used on the training data to improve the model's ability to identify churn customers.
+
+The model was evaluated using:
 
 - Precision
 - Recall
 - F1 Score
 - Accuracy
 
----
-
-## 11. Class Imbalance Handling
-
-The dataset contains fewer churned customers than non-churned customers.
-
-To handle this class imbalance, **SMOTE (Synthetic Minority Oversampling Technique)** was applied to the training data.
-
-SMOTE creates synthetic examples of the minority class to help the model identify churn customers more effectively.
-
-### Before SMOTE
-
-The training dataset contained more non-churn customers than churn customers.
-
-### After SMOTE
-
-The churn and non-churn classes were balanced in the training data.
+Recall was especially important because identifying more potential churn customers can support customer retention activities.
 
 ---
 
-## 12. Model Optimization
+## 🔧 Hyperparameter Tuning
 
-GridSearchCV was used to find better hyperparameters for the machine learning models.
+`GridSearchCV` was used to test different model parameters.
 
-The models were optimized using:
+The models were tuned using:
 
-- 3-fold cross-validation
-- F1 score as the scoring metric
+- Logistic Regression → `C`
+- Random Forest → `n_estimators`
+- XGBoost → `n_estimators`
 
-The following models were tuned:
-
-- Logistic Regression
-- Random Forest
-- XGBoost
+The models were evaluated using **F1 score** during cross-validation.
 
 ---
 
-## 13. Model Results
+## 📈 Model Results
 
 The final tuned model results were:
 
@@ -335,96 +235,208 @@ The final tuned model results were:
 | Random Forest | 57.22% | 59.36% | 58.27% | 77.43% |
 | XGBoost | 57.11% | 59.09% | 58.08% | 77.36% |
 
-The Logistic Regression model was used as the final prediction model in the project based on the evaluation results, particularly its recall and F1 score.
+### Selected Model
+
+**Logistic Regression**
+
+The tuned Logistic Regression model was selected based on the model comparison results, particularly its recall and F1 score for the churn class.
 
 ---
 
-## 14. Why Recall Matters for Churn Prediction
-
-For a churn prediction problem, identifying customers who may actually churn is important.
-
-Recall measures how many of the actual churn customers were correctly identified by the model.
-
-The final Logistic Regression model achieved:
-
-**67.11% Recall**
-
-This means the model identified approximately 67% of the actual churn cases in the test data.
-
-This metric is useful when the business wants to identify more potentially churn-prone customers for retention activities.
-
----
-
-## 15. MLflow Experiment Tracking
+## 📊 MLflow Experiment Tracking
 
 MLflow was used to track the machine learning experiments.
 
-The MLflow experiment was:
-
-`Customer Churn Prediction Final`
-
-The following information was logged:
-
-### Parameters
+The experiment recorded:
 
 - Model parameters
-- Logistic Regression `C`
-- Random Forest `n_estimators`
-- XGBoost `n_estimators`
-
-### Metrics
-
 - Precision
 - Recall
 - F1 Score
 - Accuracy
 
-This provides a record of the model experiments and makes it easier to compare model performance.
+The three final model runs were tracked in the MLflow experiment:
+
+`Customer Churn Prediction Final`
+
+This makes it easier to compare model experiments and maintain a record of the results.
 
 ---
 
-## 16. Customer Churn Prediction
+## 🔮 Customer Churn Prediction
 
-After selecting the final model, customer-level predictions were generated.
+The final model was used to generate customer-level predictions.
 
-The prediction dataset contains information such as:
+For each customer, the project generated:
 
-- Customer ID
-- Tenure
-- Monthly Charges
-- Total Charges
-- Internet Service
-- Contract
-- Total Services Used
 - Churn Probability
 - Predicted Churn
 - Risk Level
 
-The prediction output was saved as:
+### Prediction Rule
+
+If:
+
+`Churn Probability >= 50%`
+
+the customer is classified as:
+
+**Churn**
+
+Otherwise:
+
+**No Churn**
+
+### Risk Rule
+
+If:
+
+`Churn Probability >= 70%`
+
+the customer is classified as:
+
+**High Risk**
+
+Otherwise:
+
+**Normal Risk**
+
+The predictions were saved in:
 
 `ChurnPredictions.csv`
 
 ---
 
-## 17. Churn Probability
+## 🔍 Model Explainability
 
-The model generates a probability between 0 and 1.
+Model explainability was performed to understand why the model produces certain predictions.
 
-For example:
+### Global Feature Importance
 
-- `0.10` = 10% churn probability
-- `0.50` = 50% churn probability
-- `0.80` = 80% churn probability
+XGBoost feature importance was used to identify features that have a strong influence on churn prediction.
 
-The project converts this probability into a percentage for easier business interpretation.
+### LIME
+
+LIME was used to explain individual customer predictions.
+
+For example, factors such as:
+
+- Higher monthly charges
+- Lack of online security
+- Lack of technical support
+- Shorter contract periods
+- Fewer additional services
+- Lower tenure
+
+can contribute to a customer's predicted churn risk in individual model explanations.
+
+LIME was also used to explain both churn and no-churn examples.
 
 ---
 
-## 18. Prediction Rules
+## 🔄 Reusable Machine Learning Pipeline
 
-The following threshold was used for predicted churn:
+A Scikit-learn Pipeline was created containing:
+
+1. StandardScaler
+2. Tuned Logistic Regression model
+
+The pipeline was saved using Joblib as:
+
+`churn_pipeline.pkl`
+
+The saved pipeline can be loaded later and used to generate predictions without retraining the model.
+
+---
+
+## 📊 Power BI Dashboard
+
+The Power BI report contains three main pages.
+
+### Page 1 — Customer Churn Overview
+
+This page provides an overview of actual customer churn and customer patterns.
+
+Key areas include:
+
+- Customer churn
+- Churn rate
+- Customer characteristics
+- Contract patterns
+- Tenure patterns
+- Service-related churn patterns
+
+---
+
+### Page 2 — Prediction Insights
+
+This page focuses on machine learning predictions.
+
+It contains:
+
+- Predicted Churn by Contract
+- Revenue at Risk by Tenure Group
+- Monthly Charges vs Churn Probability
+- High-Risk Customers by Tenure Group
+
+Slicers include:
+
+- Contract
+- Internet Service
+- Risk Level
+
+---
+
+### Page 3 — High-Risk Customer Details
+
+This page provides customer-level information for customers identified as high risk.
+
+The table includes:
+
+- Customer ID
+- Contract
+- Tenure
+- Internet Service
+- Monthly Charges
+- Total Charges
+- Total Services Used
+- Churn Probability
+- Predicted Churn
+- Risk Level
+
+The table is filtered to show **High Risk** customers and sorted by churn probability.
+
+---
+
+## 💡 Key Business Insights
+
+The analysis identified several important churn patterns:
+
+- The overall customer churn rate is approximately **26.54%**.
+- Customers who churned had higher average monthly charges than customers who stayed.
+- Customers with shorter tenure generally show higher churn.
+- Month-to-month contracts show a higher churn rate than longer-term contracts.
+- Lack of additional services such as Online Security and Tech Support can be associated with higher churn risk.
+- Customers with higher churn probabilities can be identified for targeted retention activities.
+- Customer-level churn probabilities can help prioritize retention efforts.
+
+---
+
+## 📁 Important Project Files
+
+The project contains files related to:
 
 ```text
-Churn Probability >= 50%
-        ↓
-Predicted Churn = Yes
+Customer Churn Analysis/
+│
+├── README.md
+├── requirements.txt
+├── Customer_Churn_SQL_Task_1_to_4.pdf
+├── Customer_Churn_Tasks_5_to_9.docx
+├── Customer_Churn_Tasks_10_to_14.docx
+├── Customer_Churn_Tasks_15_to_17.docx
+├── cleaned_churn_data.csv
+├── feature_engineered_churn_data.csv
+├── ChurnPredictions.csv
+├── churn_pipeline.pkl
+└── Power BI report / screenshots
