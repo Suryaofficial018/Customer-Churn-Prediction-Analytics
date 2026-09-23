@@ -306,15 +306,15 @@ Important fields include:
 
 ### Page 1 – Customer Churn Overview
 
-![Page 1](powerbi_dasboard_image/powerbi_page1.png)
+![Page 1](powerbi_dashboard_image/powerbi_page1.png)
 
 ### Page 2 – Prediction Insights
 
-![Page 2](powerbi_dasboard_image/powerbi_page2.png)
+![Page 2](powerbi_dashboard_image/powerbi_page2.png)
 
 ### Page 3 – High-Risk Customer Details
 
-![Page 3](powerbi_dasboard_image/powerbi_page3.png)
+![Page 3](powerbi_dashboard_image/powerbi_page3.png)
 
 ---
 
