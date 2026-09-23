@@ -302,21 +302,22 @@ Important fields include:
 - Risk Level
 - Rention Strategy
 ---
-## 9. ## Power BI Dashboard Screenshots
+## 9.Power BI Dashboard Screenshots
 
 ### Page 1 – Customer Churn Overview
 
-![Page 1](images/powerbi_page1.png)
+![Page 1](powerbi_dasboard_image/powerbi_page1.png)
 
 ### Page 2 – Prediction Insights
 
-![Page 2](images/powerbi_page2.png)
+![Page 2](powerbi_dasboard_image/powerbi_page2.png)
 
 ### Page 3 – High-Risk Customer Details
 
-![Page 3](images/powerbi_page3.png)
+![Page 3](powerbi_dasboard_image/powerbi_page3.png)
 
 ---
+
 ### Key Findings:
 
 The analysis identified several important churn patterns:
