@@ -306,7 +306,7 @@ Important fields include:
 
 ### Page 1 – Customer Churn Overview
 
-![Page 1](powerbi_dashboard_image/powerbi_page1.png)
+![Page 1](CUSTOMER CHURN PROJECT/powerbi_dashboard_image/powerbi_page1.png)
 
 ### Page 2 – Prediction Insights
 
